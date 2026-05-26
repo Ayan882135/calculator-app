@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="description" content="Advanced Neon Scientific Calculator for Students and College Use">
-    <title>Ayan Calculator - Advanced Scientific Calculator</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ayan Neon Calculator</title>
+
+    <meta name="description"
+        content="Advanced Neon Scientific Calculator for Students and College Use">
 
     <style>
 
@@ -11,17 +18,26 @@
             margin:0;
             padding:0;
             box-sizing:border-box;
-            font-family:Arial, sans-serif;
+            font-family:Arial,sans-serif;
         }
 
         body{
+
             height:100vh;
+
             display:flex;
+
             justify-content:center;
+
             align-items:center;
+
             background:linear-gradient(-45deg,#0f0c29,#302b63,#24243e,#000000);
+
             background-size:400% 400%;
+
             animation:bgAnimation 10s ease infinite;
+
+            padding:15px;
         }
 
         @keyframes bgAnimation{
@@ -41,8 +57,12 @@
 
         .calculator{
 
-            width:350px;
+            width:95%;
+
+            max-width:420px;
+
             padding:20px;
+
             border-radius:25px;
 
             background:rgba(255,255,255,0.08);
@@ -56,12 +76,25 @@
             0 0 40px #8a2be2;
         }
 
+        h1{
+
+            color:white;
+
+            text-align:center;
+
+            margin-bottom:15px;
+
+            font-size:28px;
+        }
+
         #display{
 
             width:100%;
+
             height:70px;
 
             border:none;
+
             outline:none;
 
             border-radius:15px;
@@ -91,6 +124,8 @@
         }
 
         button{
+
+            width:100%;
 
             height:65px;
 
@@ -135,13 +170,22 @@
 
         @media(max-width:500px){
 
-            .calculator{
-                width:95%;
+            h1{
+                font-size:22px;
+            }
+
+            #display{
+
+                height:60px;
+
+                font-size:26px;
             }
 
             button{
-                height:60px;
-                font-size:20px;
+
+                height:55px;
+
+                font-size:18px;
             }
         }
 
@@ -152,6 +196,8 @@
 <body>
 
     <div class="calculator">
+
+        <h1>Ayan Neon Calculator</h1>
 
         <input type="text" id="display" readonly>
 
@@ -266,4 +312,5 @@
     </script>
 
 </body>
+
 </html>
