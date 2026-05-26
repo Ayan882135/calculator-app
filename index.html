@@ -1,97 +1,269 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Neon Calculator</title>
 
-  <style>
-    body{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-      background:#222;
-    }
+    <style>
 
-    .calculator{
-      background:white;
-      padding:20px;
-      border-radius:10px;
-    }
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
 
-    #display{
-      width:220px;
-      height:50px;
-      margin-bottom:10px;
-      font-size:22px;
-    }
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(-45deg,#0f0c29,#302b63,#24243e,#000000);
+            background-size:400% 400%;
+            animation:bgAnimation 10s ease infinite;
+        }
 
-    button{
-      width:50px;
-      height:50px;
-      margin:2px;
-      font-size:20px;
-      cursor:pointer;
-    }
-  </style>
+        @keyframes bgAnimation{
+
+            0%{
+                background-position:0% 50%;
+            }
+
+            50%{
+                background-position:100% 50%;
+            }
+
+            100%{
+                background-position:0% 50%;
+            }
+        }
+
+        .calculator{
+
+            width:350px;
+            padding:20px;
+            border-radius:25px;
+
+            background:rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(20px);
+
+            border:1px solid rgba(255,255,255,0.2);
+
+            box-shadow:
+            0 0 20px #00f7ff,
+            0 0 40px #8a2be2;
+        }
+
+        #display{
+
+            width:100%;
+            height:70px;
+
+            border:none;
+            outline:none;
+
+            border-radius:15px;
+
+            margin-bottom:20px;
+
+            background:black;
+
+            color:#00f7ff;
+
+            font-size:32px;
+
+            text-align:right;
+
+            padding-right:15px;
+
+            box-shadow:0 0 15px #00f7ff;
+        }
+
+        .buttons{
+
+            display:grid;
+
+            grid-template-columns:repeat(4,1fr);
+
+            gap:10px;
+        }
+
+        button{
+
+            height:65px;
+
+            border:none;
+
+            border-radius:18px;
+
+            font-size:22px;
+
+            cursor:pointer;
+
+            color:white;
+
+            background:rgba(255,255,255,0.08);
+
+            transition:0.3s;
+        }
+
+        button:hover{
+
+            transform:scale(1.08);
+
+            box-shadow:
+            0 0 15px #00f7ff,
+            0 0 25px #8a2be2;
+        }
+
+        .operator{
+
+            background:linear-gradient(135deg,#8a2be2,#00f7ff);
+        }
+
+        .equal{
+
+            background:linear-gradient(135deg,#00f7ff,#0066ff);
+        }
+
+        .scientific{
+
+            background:linear-gradient(135deg,#ff0080,#7928ca);
+        }
+
+        @media(max-width:500px){
+
+            .calculator{
+                width:95%;
+            }
+
+            button{
+                height:60px;
+                font-size:20px;
+            }
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-<div class="calculator">
+    <div class="calculator">
 
-  <input type="text" id="display" readonly>
+        <input type="text" id="display" readonly>
 
-  <br>
+        <div class="buttons">
 
-  <button onclick="clearDisplay()">C</button>
-  <button onclick="appendValue('7')">7</button>
-  <button onclick="appendValue('8')">8</button>
-  <button onclick="appendValue('9')">9</button>
+            <button onclick="clearDisplay()" class="operator">AC</button>
 
-  <br>
+            <button onclick="appendValue('%')" class="operator">%</button>
 
-  <button onclick="appendValue('4')">4</button>
-  <button onclick="appendValue('5')">5</button>
-  <button onclick="appendValue('6')">6</button>
-  <button onclick="appendValue('+')">+</button>
+            <button onclick="appendValue('/')" class="operator">÷</button>
 
-  <br>
+            <button onclick="appendValue('*')" class="operator">×</button>
 
-  <button onclick="appendValue('1')">1</button>
-  <button onclick="appendValue('2')">2</button>
-  <button onclick="appendValue('3')">3</button>
-  <button onclick="appendValue('-')">-</button>
+            <button onclick="appendValue('7')">7</button>
 
-  <br>
+            <button onclick="appendValue('8')">8</button>
 
-  <button onclick="appendValue('0')">0</button>
-  <button onclick="appendValue('*')">*</button>
-  <button onclick="appendValue('/')">/</button>
-  <button onclick="calculate()">=</button>
+            <button onclick="appendValue('9')">9</button>
 
-</div>
+            <button onclick="appendValue('-')" class="operator">−</button>
 
-<script>
+            <button onclick="appendValue('4')">4</button>
 
-function appendValue(value){
-  document.getElementById("display").value += value;
-}
+            <button onclick="appendValue('5')">5</button>
 
-function clearDisplay(){
-  document.getElementById("display").value = "";
-}
+            <button onclick="appendValue('6')">6</button>
 
-function calculate(){
-  try{
-    document.getElementById("display").value =
-    eval(document.getElementById("display").value);
-  }
-  catch{
-    alert("Invalid Input");
-  }
-}
+            <button onclick="appendValue('+')" class="operator">+</button>
 
-</script>
+            <button onclick="appendValue('1')">1</button>
+
+            <button onclick="appendValue('2')">2</button>
+
+            <button onclick="appendValue('3')">3</button>
+
+            <button onclick="calculate()" class="equal">=</button>
+
+            <button onclick="appendValue('0')">0</button>
+
+            <button onclick="appendValue('.')">.</button>
+
+            <button onclick="appendValue('(')">(</button>
+
+            <button onclick="appendValue(')')">)</button>
+
+            <button onclick="scientific('sqrt')" class="scientific">√</button>
+
+            <button onclick="scientific('square')" class="scientific">x²</button>
+
+            <button onclick="scientific('sin')" class="scientific">sin</button>
+
+            <button onclick="scientific('cos')" class="scientific">cos</button>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function appendValue(value){
+
+            document.getElementById("display").value += value;
+        }
+
+        function clearDisplay(){
+
+            document.getElementById("display").value = "";
+        }
+
+        function calculate(){
+
+            try{
+
+                let result = eval(document.getElementById("display").value);
+
+                document.getElementById("display").value = result;
+            }
+
+            catch{
+
+                alert("Invalid Input");
+            }
+        }
+
+        function scientific(type){
+
+            let display = document.getElementById("display");
+
+            let value = parseFloat(display.value);
+
+            if(type === "sqrt"){
+
+                display.value = Math.sqrt(value);
+            }
+
+            if(type === "square"){
+
+                display.value = value * value;
+            }
+
+            if(type === "sin"){
+
+                display.value = Math.sin(value);
+            }
+
+            if(type === "cos"){
+
+                display.value = Math.cos(value);
+            }
+        }
+
+    </script>
 
 </body>
 </html>
